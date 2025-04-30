@@ -1,113 +1,114 @@
+Task Scheduler
+A simple and intuitive task scheduler app built with React. This app allows users to add, edit, complete, and delete tasks with specific due dates and times, and provides reminders for upcoming tasks. The app also supports dark mode and task persistence across sessions.
 
-A Task Scheduler application built using Node.js, Express, MongoDB, and React. This project allows users to manage tasks, set recurring events, mark tasks as completed, and receive notifications for reminders. The application features a clean user interface with date and time pickers, and uses cron jobs to handle task scheduling.
+Features
+📝 Task Management:
 
-## ✨ Features
+Add new tasks with a title, due date, due time, priority, and category.
 
-- ✅ **Task Creation**: Add tasks with a title and due date.
-- 🔁 **Recurring Tasks**: Schedule tasks to repeat daily, weekly, or at custom intervals.
-- ✔️ **Mark Tasks as Completed**: Track completed tasks and move them to a separate list.
-- 🗂️ **Completed Tasks View**: View completed tasks in a separate list.
-- 🔔 **Notifications/Reminders**: Receive reminders for upcoming or active tasks.
-- 🧩 **REST APIs**: Create, update, delete, and retrieve tasks via API.
-- ⏰ **Cron Jobs**: Automatically handle recurring tasks and scheduled reminders.
-- 📅 **UI with Date and Time Pickers**: Clean, user-friendly interface for scheduling.
+Edit existing tasks.
 
-## 🛠️ Technologies Used
+Mark tasks as completed.
 
-### Backend:
-- Node.js
-- Express.js
-- MongoDB
-- Cron (for task automation)
-- Push Notifications (optional)
+Delete tasks.
 
-### Frontend:
-- React
-- Axios
-- React Calendar
-- Date & Time Pickers
+📅 Date and Time:
 
-## 🚀 Setup Instructions
+Set due date and time for tasks.
 
-### ✅ Prerequisites
-Make sure the following are installed:
-- [Node.js](https://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/try/download/community)
-- [Git](https://git-scm.com/)
+Real-time reminders 5 minutes before the task's due time.
 
----
+⏰ Reminders:
 
-### 📦 Installation
+Notifications via react-toastify when tasks are due soon (within 5 minutes).
 
-1. **Clone the repository:**
-```bash
-git clone https://github.com/Pragathi-Reddy/Task-Scheduler.git
-cd Task-Scheduler
-Install backend dependencies:
+Audio reminder plays when a task is due soon.
+
+⚖️ Priority & Category:
+
+Tasks can have different priority levels: High, Medium, Low.
+
+Tasks can be categorized as Work or Personal.
+
+🌙 Dark Mode:
+
+Toggle dark mode for a better visual experience.
+
+User preferences are saved in localStorage, so the dark mode setting persists across sessions.
+
+💾 Task Persistence:
+
+Tasks are saved in localStorage to persist even after page reloads.
+
+Tech Stack
+React: Frontend library for building the user interface.
+
+Material-UI: For UI components like DatePicker, TextField, and buttons.
+
+react-toastify: For showing toast notifications for reminders.
+
+Local Storage: For saving tasks and dark mode settings across sessions.
+
+Installation
+To run the Task Scheduler app locally, follow these steps:
+
+Clone this repository:
 
 bash
 Copy
 Edit
-cd backend
+git clone https://github.com/your-username/task-scheduler.git
+cd task-scheduler
+Install dependencies:
+
+bash
+Copy
+Edit
 npm install
-Install frontend dependencies:
+Run the app:
 
 bash
 Copy
 Edit
-cd ../frontend
-npm install
-Set up environment variables: Create a .env file in backend/:
-
-env
-Copy
-Edit
-MONGODB_URI=mongodb://localhost:27017/task-scheduler
-▶️ Running the Application
-Start the backend:
-
-bash
-Copy
-Edit
-cd backend
 npm start
-Start the frontend:
+Open your browser and navigate to http://localhost:3000 to see the app in action.
 
-bash
-Copy
-Edit
-cd ../frontend
-npm start
-🌐 Access the App
-Backend API: http://localhost:5000
+Usage
+➕ Add a Task:
 
-Frontend UI: http://localhost:3000
+Enter the task name, select a due date, time, priority, and category, then click "Add Task" to create a new task.
 
-📚 API Endpoints
-Method	Endpoint	Description
-POST	/tasks	Create a new task
-GET	/tasks	Retrieve all tasks
-GET	/tasks/completed	Retrieve completed tasks
-PUT	/tasks/:id	Update or mark task as completed
-DELETE	/tasks/:id	Delete a task
-POST	/tasks/recurring	Create recurring tasks
-🤝 Contributing
-Fork the repo, create a branch, and submit a pull request. Contributions are welcome!
+✏️ Edit a Task:
 
-📄 License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+Click the edit button on a task to modify its details.
 
-yaml
-Copy
-Edit
+✅ Mark a Task as Completed:
 
----
+Click the checkmark button to mark a task as completed.
 
-### 📌 Next Steps:
-1. Create a file in your project root: `README.md`.
-2. Paste the above content.
-3. Commit and push:
-```bash
-git add README.md
-git commit -m "Add project README"
-git push
+🗑️ Delete a Task:
+
+Click the trash icon to delete a task.
+
+🌙 Toggle Dark Mode:
+
+Click the "Dark Mode" button to toggle between light and dark themes.
+
+Screenshots
+
+Known Issues
+🎵 Audio reminder may not work in some browsers due to autoplay restrictions. If you experience issues, ensure your browser allows autoplay for audio.
+
+Future Enhancements
+🔍 Task Search: Allow users to search for tasks by name or category.
+
+🔁 Recurring Tasks: Support for recurring tasks with daily, weekly, or monthly options.
+
+🧑‍💻 Task Sorting: Ability to sort tasks by priority or due date.
+
+☁️ Cloud Sync: Sync tasks across devices using a backend service.
+
+License
+This project is licensed under the MIT License.
+
+
