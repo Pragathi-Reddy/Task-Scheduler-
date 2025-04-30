@@ -3,57 +3,40 @@ A simple and intuitive task scheduler app built with React. This app allows user
 
 Features
 📝 Task Management:
-
 Add new tasks with a title, due date, due time, priority, and category.
-
 Edit existing tasks.
-
 Mark tasks as completed.
-
 Delete tasks.
 
 📅 Date and Time:
-
 Set due date and time for tasks.
-
 Real-time reminders 5 minutes before the task's due time.
 
 ⏰ Reminders:
 
 Notifications via react-toastify when tasks are due soon (within 5 minutes).
-
 Audio reminder plays when a task is due soon.
 
 ⚖️ Priority & Category:
-
 Tasks can have different priority levels: High, Medium, Low.
-
-Tasks can be categorized as Work or Personal.
+Task can be categorized as Work or Personal.
 
 🌙 Dark Mode:
-
 Toggle dark mode for a better visual experience.
-
 User preferences are saved in localStorage, so the dark mode setting persists across sessions.
 
 💾 Task Persistence:
-
 Tasks are saved in localStorage to persist even after page reloads.
 
 Tech Stack
 React: Frontend library for building the user interface.
-
 Material-UI: For UI components like DatePicker, TextField, and buttons.
-
 react-toastify: For showing toast notifications for reminders.
-
 Local Storage: For saving tasks and dark mode settings across sessions.
 
 Installation
 To run the Task Scheduler app locally, follow these steps:
-
 Clone this repository:
-
 bash
 Copy
 Edit
