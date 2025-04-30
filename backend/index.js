@@ -1,25 +1,39 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const taskRoutes = require('./routes/taskRoutes');
-const recurringScheduler = require('./schedulers/recurringScheduler');
-const reminderScheduler = require('./schedulers/reminderScheduler');
+const Task = require('./models/Task');
 
 const app = express();
-const PORT = 5000;
-
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/task-scheduler')
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch((err) => console.error('MongoDB error:', err));
+mongoose.connect('mongodb://127.0.0.1:27017/taskscheduler', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err));
 
-app.use('/api/tasks', taskRoutes);
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+// Routes
+app.get('/api/tasks', async (req, res) => {
+  const tasks = await Task.find();
+  res.json(tasks);
 });
 
-setInterval(reminderScheduler, 60000); // every 60 seconds
-setInterval(recurringScheduler, 3600000); // every hour
+app.post('/api/tasks', async (req, res) => {
+  const { title, dueDate, recurrence } = req.body;
+  const task = new Task({ title, dueDate, recurrence });
+  await task.save();
+  res.status(201).json(task);
+});
+
+app.put('/api/tasks/:id', async (req, res) => {
+  const { id } = req.params;
+  const { completed } = req.body;
+  await Task.findByIdAndUpdate(id, { completed });
+  res.sendStatus(200);
+});
+
+app.listen(5000, () => {
+  console.log('Server running on port 5000');
+});
+

@@ -1,38 +1,38 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
-
-const taskRoutes = require('./routes/taskRoutes');
-
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = 5000;
 
-app.use(cors());
+// Middleware
 app.use(express.json());
+app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Task Scheduler API is running!');
-});
-
-app.use('/api/tasks', taskRoutes);
-
-mongoose.connect(process.env.MONGO_URI, {
+// Connect to MongoDB (Replace with your MongoDB URI)
+mongoose.connect('mongodb://localhost:27017/task-scheduler', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-})
-.then(() => {
-  console.log('MongoDB connected');
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-})
-.catch((err) => {
-  console.error('MongoDB connection error:', err);
 });
 
-// Load schedulers
-require('./scheduler/recurringScheduler');
-require('./scheduler/notificationScheduler');
+// Task Model
+const taskSchema = new mongoose.Schema({
+  title: String,
+  dueDate: Date,
+  completed: Boolean,
+});
 
+const Task = mongoose.model('Task', taskSchema);
 
+// Routes
+app.get('/api/tasks', async (req, res) => {
+  try {
+    const tasks = await Task.find();
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching tasks' });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
